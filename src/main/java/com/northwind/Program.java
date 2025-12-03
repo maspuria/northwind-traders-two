@@ -1,9 +1,11 @@
 package com.northwind;
 
 import com.northwind.data.CustomerDao;
+import com.northwind.model.Customer;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 public class Program {
     public static void main(String[] args) {
@@ -19,7 +21,8 @@ public class Program {
 
         CustomerDao customerDao = new CustomerDao(dataSource);
 
-
+        List<Customer> customers = customerDao.getAll();
+        System.out.println(customers);
 
     }
 }
