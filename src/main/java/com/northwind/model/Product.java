@@ -4,9 +4,9 @@ public class Product {
 
     //field members
     private int productId;
-    private String ProductName;
-    private int SupplierId;
-    private int CategoryId;
+    private String productName;
+    private int supplierId;
+    private int categoryId;
     private String quantityPerUnit;
     private double unitPrice;
     private int unitsInStock;
@@ -20,9 +20,9 @@ public class Product {
                    int unitsInStock, int unitsOnOrder,
                    int reorderLevel, int discontinued) {
         this.productId = productId;
-        ProductName = productName;
-        SupplierId = supplierId;
-        CategoryId = categoryId;
+        this.productName = productName;
+        this.supplierId = supplierId;
+        this.categoryId = categoryId;
         this.quantityPerUnit = quantityPerUnit;
         this.unitPrice = unitPrice;
         this.unitsInStock = unitsInStock;
@@ -41,27 +41,27 @@ public class Product {
     }
 
     public String getProductName() {
-        return ProductName;
+        return productName;
     }
 
     public void setProductName(String productName) {
-        ProductName = productName;
+        this.productName = productName;
     }
 
     public int getSupplierId() {
-        return SupplierId;
+        return supplierId;
     }
 
     public void setSupplierId(int supplierId) {
-        SupplierId = supplierId;
+        this.supplierId = supplierId;
     }
 
     public int getCategoryId() {
-        return CategoryId;
+        return categoryId;
     }
 
     public void setCategoryId(int categoryId) {
-        CategoryId = categoryId;
+        this.categoryId = categoryId;
     }
 
     public String getQuantityPerUnit() {
@@ -117,16 +117,17 @@ public class Product {
 
     @Override
     public String toString() {
-        return "\n Product: \n" +
-                "productId=" + productId + '\n' +
-                ", ProductName='" + ProductName + '\n' +
-                ", SupplierId=" + SupplierId + '\n' +
-                ", CategoryId=" + CategoryId + '\n' +
-                ", quantityPerUnit='" + quantityPerUnit + '\n' +
-                ", unitPrice=" + unitPrice + '\n' +
-                ", unitsInStock=" + unitsInStock + '\n' +
-                ", unitsOnOrder=" + unitsOnOrder + '\n' +
-                ", reorderLevel=" + reorderLevel + '\n' +
-                ", discontinued=" + discontinued + '\n';
+        return "\nProduct: \n" +
+                "ProductId = " + productId + '\n' +
+                "ProductName = " + productName + '\n' +
+                "SupplierId = " + supplierId + '\n' +
+                "CategoryId = " + categoryId + '\n' +
+                "QuantityPerUnit = " + quantityPerUnit + '\n' +
+                "UnitPrice = " + unitPrice + '\n' +
+                "UnitsInStock = " + unitsInStock + '\n' +
+                "UnitsOnOrder = " + unitsOnOrder + '\n' +
+                "ReorderLevel = " + reorderLevel + '\n' +
+                "Discontinued = " + discontinued + '\n' +
+                "------------------------------------------";
     }
 }

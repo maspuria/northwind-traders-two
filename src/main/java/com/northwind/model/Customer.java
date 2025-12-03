@@ -134,7 +134,8 @@ public class Customer {
                 " postalCode = " + postalCode + '\n' +
                 " country = " + country + '\n' +
                 " phone = " + phone + '\n' +
-                " fax = " + fax + '\n';
+                " fax = " + fax + '\n' +
+                "=============================================\n";
     }
 
 }
