@@ -1,6 +1,7 @@
 package com.northwind.data;
 
 import com.northwind.model.Product;
+import com.northwind.model.Shipper;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -20,8 +21,6 @@ public class ProductDao {
     public List<Product> getAll() {
         List<Product> products = new ArrayList<>();
 
-        //call the database and get back products
-        //create Customer objects and fill them with the data from the database ResultSet
         String query = """
                 SELECT ProductID, ProductName, SupplierID, CategoryID, QuantityPerUnit, UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued
                 FROM products;
@@ -56,5 +55,45 @@ public class ProductDao {
 
         return products;
     }
+
+    public Product find(int productId) {
+
+        Product product = null;
+
+        String query = """
+                SELECT ProductID, ProductName, SupplierID, CategoryID, QuantityPerUnit, UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued
+                FROM products
+                WHERE ProductID = ?;
+                """;
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, productId);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+
+                if (resultSet.next()) {
+                    product = new Product(
+                            resultSet.getInt("ProductID"),
+                            resultSet.getString("ProductName"),
+                            resultSet.getInt("SupplierID"),
+                            resultSet.getInt("CategoryID"),
+                            resultSet.getString("QuantityPerUnit"),
+                            resultSet.getDouble("UnitPrice"),
+                            resultSet.getInt("UnitsInStock"),
+                            resultSet.getInt("UnitsOnOrder"),
+                            resultSet.getInt("ReorderLevel"),
+                            resultSet.getInt("Discontinued"));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("There was an error retrieving the data. Please try again.");
+            e.printStackTrace();
+        }
+        return product;
+    }
+
+
 
 }

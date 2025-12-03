@@ -23,19 +23,38 @@ public class Program {
         dataSource.setUsername(username);
         dataSource.setPassword(password);
 
-
+        // ===================== Customer ======================
         CustomerDao customerDao = new CustomerDao(dataSource);
         List<Customer> customers = customerDao.getAll();
         System.out.println(customers);
 
+        // ===================== Product ======================
         ProductDao productDao = new ProductDao(dataSource);
         List<Product> products = productDao.getAll();
         System.out.println(products);
 
+        System.out.println("\n=========== Test ===========");
+        System.out.println("\n==== Find Product By ID ====");
+        Product foundProduct = productDao.find(78);
+        if (foundProduct != null) {
+            System.out.println("Product Found: " + foundProduct);
+        } else {
+            System.out.println("Shipper not found.");
+        }
+
+        // ===================== Shipper ======================
         ShipperDao shipperDao = new ShipperDao(dataSource);
         List<Shipper> shippers = shipperDao.getAll();
         System.out.println(shippers);
 
+        System.out.println("\n=========== Test ===========");
+        System.out.println("\n==== Find Shipper By ID ====");
+        Shipper foundShipper = shipperDao.find(2);
+        if (foundShipper != null) {
+            System.out.println("Shipper Found: " + foundShipper);
+        } else {
+            System.out.println("Shipper not found.");
+        }
 
 
     }

@@ -113,8 +113,6 @@ public class Product {
     }
 
     //toString to display product data
-
-
     @Override
     public String toString() {
         return "\nProduct: \n" +

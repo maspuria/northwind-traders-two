@@ -37,7 +37,7 @@ public class Shipper {
 
     @Override
     public String toString() {
-        return "\n Shipper: \n" +
+        return "\nShipper: \n" +
                 "ShipperId = " + shipperId + '\n' +
                 "CompanyName = " + companyName + '\n' +
                 "Phone = " + phone + '\n' +
