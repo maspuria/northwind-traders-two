@@ -27,7 +27,6 @@ public class CustomerDao {
                 FROM Customers;
                 """;
 
-
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
@@ -57,6 +56,11 @@ public class CustomerDao {
         }
 
         return customers;
+    }
+
+    //next step:
+    public Customer find(int customerId) {
+        return null;
     }
 
 }

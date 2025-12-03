@@ -123,7 +123,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer " +
+        return "\n Customer: \n" +
                 " customerId = " + customerId + '\n' +
                 " companyName = " + companyName + '\n' +
                 " contactName = " + contactName + '\n' +
@@ -134,7 +134,7 @@ public class Customer {
                 " postalCode = " + postalCode + '\n' +
                 " country = " + country + '\n' +
                 " phone = " + phone + '\n' +
-                " fax = " + fax + '\n' + '\n';
+                " fax = " + fax + '\n';
     }
 
 }
