@@ -1,5 +1,14 @@
 # Data Access
-- bring in maven dependency
+- bring in Maven dependency for the DataSource from commons.dbcp2 to `pom.xml`
+```xml
+ <dependencies>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-dbcp2</artifactId>
+        <version>2.13.0</version>
+    </dependency>
+</dependencies>
+```
 
 - store username and passwords as configured command-line arguments
 
