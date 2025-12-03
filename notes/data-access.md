@@ -36,7 +36,7 @@
 - Data access best practices
 
   - should take in the `DataSource` object in the constructor
-  - use a `try` resources blocks
+  - use a `try` resources block
   - let resources be auto-closed for us
   - handle `Exception` in the `catch`
   - use `PreparedStatement` to avoid SQL Injection
