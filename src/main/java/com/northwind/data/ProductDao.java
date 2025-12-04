@@ -134,17 +134,24 @@ public class ProductDao {
     }
 
     // delete method to delete customer
-    public void delete(String productId) {
+    public void delete(int productId) {
 
         String query = """
                 DELETE FROM products
                 WHERE ProductID = ?;
                 """;
 
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement statement = connection.prepareStatement(query));
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
 
+            statement.setInt(1, productId);
 
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("There was an error deleting the product. Please try again.");
+            e.printStackTrace();
+        }
 
     }
 
