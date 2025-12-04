@@ -94,6 +94,16 @@ public class ProductDao {
         return product;
     }
 
+    // update an existing customer
+    public void update(Product product) {
+
+        String query = """
+                UPDATE
+                SET
+                WHERE ProductID = ?;
+                """;
+    }
+
 
 
 }
