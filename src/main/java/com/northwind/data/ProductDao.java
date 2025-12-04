@@ -1,13 +1,9 @@
 package com.northwind.data;
 
 import com.northwind.model.Product;
-import com.northwind.model.Shipper;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,7 +90,7 @@ public class ProductDao {
         return product;
     }
 
-    // update method to update an existing customer
+    // update method to update an existing product
     public void update(Product product) {
 
         String query = """
@@ -125,15 +121,16 @@ public class ProductDao {
             statement.setInt(8, product.getUnitsOnOrder());
             statement.setInt(9,product.getReorderLevel());
             statement.setInt(10, product.getDiscontinued());
+            statement.setInt(11,product.getProductId());
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("There was an error updating the customer. Please try again.");
+            System.out.println("There was an error updating the product. Please try again. " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    // delete method to delete customer
+    // delete method to delete product
     public void delete(int productId) {
 
         String query = """
@@ -155,5 +152,49 @@ public class ProductDao {
 
     }
 
+    // add method to add a product
+    public Product add(Product product) {
+        String query = """
+                        INSERT INTO products (ProductName,
+                                                SupplierID,
+                                                CategoryID,
+                                                QuantityPerUnit,
+                                                UnitPrice,
+                                                UnitsInStock,
+                                                UnitsOnOrder,
+                                                ReorderLevel,
+                                                Discontinued)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+                        """;
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+
+            statement.setString(1,product.getProductName());
+            statement.setInt(2,product.getSupplierId());
+            statement.setInt(3, product.getCategoryId());
+            statement.setString(4, product.getQuantityPerUnit());
+            statement.setDouble(5,product.getUnitPrice());
+            statement.setInt(6,product.getUnitsInStock());
+            statement.setInt(7, product.getUnitsOnOrder());
+            statement.setInt(8,product.getReorderLevel());
+            statement.setInt(9, product.getDiscontinued());
+
+            statement.executeUpdate();
+
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int generatedId = generatedKeys.getInt(1);
+                    product.setProductId(generatedId);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error adding product." + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return product;
+    }
 
 }
