@@ -40,7 +40,7 @@ public class CustomerDao {
 
     // METHOD 1: GET ALL CUSTOMERS
     // This method retrieves ALL customers from the database and returns them as a list
-    // It's like asking "Show me everyone in your database"
+    // It's like asking "Show me everyone in your database table"
     public List<Customer> getAll() {
 
         // Create an empty ArrayList to store all the customers we'll find

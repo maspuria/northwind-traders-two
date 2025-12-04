@@ -15,6 +15,9 @@ public class Product {
     private int discontinued;
 
     //constructor
+    public Product() {
+    }
+
     public Product(int productId, String productName, int supplierId,
                    int categoryId, String quantityPerUnit, double unitPrice,
                    int unitsInStock, int unitsOnOrder,

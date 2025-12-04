@@ -79,34 +79,34 @@ public class ShipperDao{
         return shipper;
     }
 
-//    public Shipper add(Shipper shipper) {
-//        String query = """
-//                INSERT INTO Shippers (CompanyName, Phone)
-//                VALUES (?, ?);
-//                """;
-//
-//        try (Connection connection = dataSource.getConnection();
-//             PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
-//
-//            statement.setString(1, shipper.getCompanyName());
-//            statement.setString(2, shipper.getPhone());
-//
-//            statement.executeUpdate();
-//
-//            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-//                if (generatedKeys.next()) {
-//                    int generatedId = generatedKeys.getInt(1);
-//                    shipper.setShipperId(generatedId);
-//                }
-//            }
-//
-//        } catch (SQLException e) {
-//            System.out.println("There was an error adding the shipper. Please try again.");
-//            e.printStackTrace();
-//        }
-//
-//        return shipper;
-//    }
+    public Shipper add(Shipper shipper) {
+        String query = """
+                INSERT INTO Shippers (CompanyName, Phone)
+                VALUES (?, ?);
+                """;
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+
+            statement.setString(1, shipper.getCompanyName());
+            statement.setString(2, shipper.getPhone());
+
+            statement.executeUpdate();
+
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int generatedId = generatedKeys.getInt(1);
+                    shipper.setShipperId(generatedId);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("There was an error adding the shipper. Please try again.");
+            e.printStackTrace();
+        }
+
+        return shipper;
+    }
 
     public void update(Shipper shipper) {
         String query = """
