@@ -12,16 +12,14 @@ public class Product {
     private int unitsInStock;
     private int unitsOnOrder;
     private int reorderLevel;
-    private int discontinued;
+    private boolean discontinued;
 
     //constructor
     public Product() {
     }
 
-    public Product(int productId, String productName, int supplierId,
-                   int categoryId, String quantityPerUnit, double unitPrice,
-                   int unitsInStock, int unitsOnOrder,
-                   int reorderLevel, int discontinued) {
+    public Product(int productId, String productName, int supplierId, int categoryId, String quantityPerUnit,
+                   double unitPrice, int unitsInStock, int unitsOnOrder, int reorderLevel, boolean discontinued) {
         this.productId = productId;
         this.productName = productName;
         this.supplierId = supplierId;
@@ -107,11 +105,11 @@ public class Product {
         this.reorderLevel = reorderLevel;
     }
 
-    public int getDiscontinued() {
+    public boolean isDiscontinued() {
         return discontinued;
     }
 
-    public void setDiscontinued(int discontinued) {
+    public void setDiscontinued(boolean discontinued) {
         this.discontinued = discontinued;
     }
 

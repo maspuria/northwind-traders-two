@@ -38,7 +38,7 @@ public class ProductDao {
                             resultSet.getInt("UnitsInStock"),
                             resultSet.getInt("UnitsOnOrder"),
                             resultSet.getInt("ReorderLevel"),
-                            resultSet.getInt("Discontinued"));
+                            resultSet.getBoolean("Discontinued"));
 
                     products.add(product);
                 }
@@ -80,7 +80,7 @@ public class ProductDao {
                             resultSet.getInt("UnitsInStock"),
                             resultSet.getInt("UnitsOnOrder"),
                             resultSet.getInt("ReorderLevel"),
-                            resultSet.getInt("Discontinued"));
+                            resultSet.getBoolean("Discontinued"));
                 }
             }
         } catch (SQLException e) {
@@ -120,7 +120,7 @@ public class ProductDao {
             statement.setInt(7,product.getUnitsInStock());
             statement.setInt(8, product.getUnitsOnOrder());
             statement.setInt(9,product.getReorderLevel());
-            statement.setInt(10, product.getDiscontinued());
+            statement.setBoolean(10, product.isDiscontinued());
             statement.setInt(11,product.getProductId());
 
             statement.executeUpdate();
@@ -178,7 +178,7 @@ public class ProductDao {
             statement.setInt(6,product.getUnitsInStock());
             statement.setInt(7, product.getUnitsOnOrder());
             statement.setInt(8,product.getReorderLevel());
-            statement.setInt(9, product.getDiscontinued());
+            statement.setBoolean(9, product.isDiscontinued());
 
             statement.executeUpdate();
 

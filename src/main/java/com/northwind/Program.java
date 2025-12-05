@@ -103,7 +103,7 @@ public class Program {
         newProduct.setUnitsInStock(40);
         newProduct.setUnitsOnOrder(0);
         newProduct.setReorderLevel(0);
-        newProduct.setDiscontinued(0);
+        newProduct.setDiscontinued(true);
 
         Product addedProduct = productDao.add(newProduct); // add product to database
         System.out.println("\nAdded: " + addedProduct);
@@ -142,7 +142,7 @@ public class Program {
             verifyProduct.setUnitsInStock(45);
             verifyProduct.setUnitsOnOrder(1);
             verifyProduct.setReorderLevel(0);
-            verifyProduct.setDiscontinued(0);
+            verifyProduct.setDiscontinued(true);
 
             // save changes
             productDao.update(verifyProduct);
